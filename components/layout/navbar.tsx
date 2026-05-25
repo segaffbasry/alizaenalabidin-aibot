@@ -10,7 +10,7 @@ import { createClient } from "@/lib/supabase/client";
 import { UserMenu } from "@/components/ui/user-menu";
 
 const BASE_NAV_LINKS = [
-  { label: "Ali Zaenal Abidin", href: "https://alizaenalabidin.com", external: true },
+  { label: "Ali Zaenal Abidin", href: "https://alizaenalabidin-web.vercel.app/", external: true },
   { label: "Upgrade", href: "/upgrade", external: false },
 ];
 
@@ -81,8 +81,8 @@ export function Navbar() {
   return (
     <>
       {/* Floating pill navbar */}
-      <header className="fixed top-4 sm:top-[30px] left-0 right-0 z-50 flex justify-center px-3 sm:px-6">
-        <nav className="flex items-center gap-1 bg-black/80 backdrop-blur-md rounded-full px-2 sm:px-3 py-1.5 sm:py-2 shadow-xl shadow-black/20">
+      <header className="fixed top-4 sm:top-[30px] left-4 right-4 sm:left-0 sm:right-0 z-50 flex justify-center sm:px-6">
+        <nav className="flex items-center bg-black/80 backdrop-blur-md w-full sm:w-auto rounded-full px-4 sm:pl-3 sm:pr-[18px] py-3 sm:py-2 shadow-xl shadow-black/20">
           {/* Logo */}
           <Link
             href="/"
@@ -92,8 +92,11 @@ export function Navbar() {
             Tanya AZA
           </Link>
 
+          {/* Spacer — pushes items to the right on mobile */}
+          <div className="flex-1 lg:hidden" />
+
           {/* Desktop links */}
-          <ul className="hidden lg:flex items-center">
+          <ul className="hidden lg:flex items-center ml-1">
             {NAV_LINKS.map(({ label, href, external }, i) => (
               <motion.li
                 key={href}
@@ -240,20 +243,6 @@ export function Navbar() {
               </motion.div>
             )}
 
-            <motion.div
-              className="absolute bottom-12 left-8 right-8 flex items-center gap-4"
-              variants={itemVariants}
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-              transition={{ delay: 0.4 }}
-            >
-              <span className="h-px flex-1 bg-white/10" />
-              <span className="text-xs tracking-widest uppercase text-white/30" style={{ fontFamily: "var(--font-body)" }}>
-                AI Ali Zaenal Abidin
-              </span>
-              <span className="h-px flex-1 bg-white/10" />
-            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
