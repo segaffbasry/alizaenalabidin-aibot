@@ -262,7 +262,7 @@ export default function LandingPage() {
 
       <main className="flex-1" ref={heroRef}>
         {/* Hero */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-12 sm:pb-16 md:pt-40 md:pb-20">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-12 sm:pb-16 md:pt-44 md:pb-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             {/* Left */}
             <div>
