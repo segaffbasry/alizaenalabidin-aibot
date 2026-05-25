@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F5F0E8;
+  --foreground: #1A1A1A;
+  --gold: #C8A96E;
+  --muted: #6B6560;
+}
+
+@theme inline {
+  --color-brand-bg: #F5F0E8;
+  --color-brand-dark: #1A1A1A;
+  --color-brand-gold: #C8A96E;
+  --color-brand-sage: #7A9E9B;
+  --color-brand-muted: #6B6560;
+  --font-display: var(--font-bebas), 'Bebas Neue', Impact, sans-serif;
+  --font-logo: var(--font-malvian), 'Malvian', sans-serif;
+  --font-body: var(--font-general-sans), 'General Sans', system-ui, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Only the hero h1 uses Bebas Neue — all other elements use General Sans */
+
+.font-malvian {
+  font-family: var(--font-malvian), 'Malvian', sans-serif;
+}
+
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-text {
+  display: inline-block;
+  background: linear-gradient(270deg, #734133, #9cc8bf, #deb6a4, #f3ebd9, #9cc8bf, #734133) !important;
+  background-size: 400% 400% !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  animation: gradient-shift 5s ease infinite !important;
+  will-change: background-position;
+}
+
+.pricing-gradient-card {
+  background-color: #a8b8b2;
+  background-image:
+    radial-gradient(ellipse 80% 70% at 0% 0%,    #734133cc 0%, transparent 100%),
+    radial-gradient(ellipse 70% 80% at 100% 0%,  #a8b8b2ee 0%, transparent 100%),
+    radial-gradient(ellipse 80% 70% at 100% 100%, #deb6a4bb 0%, transparent 100%),
+    radial-gradient(ellipse 70% 80% at 0% 100%,  #a8b8b2dd 0%, transparent 100%),
+    radial-gradient(ellipse 60% 60% at 50% 50%,  #f3ebd988 0%, transparent 100%);
+}
+
+.pricing-gradient-card-alt {
+  background-color: #8bbfb8;
+  background-image:
+    radial-gradient(ellipse 75% 80% at 100% 0%,  #4a7a73cc 0%, transparent 100%),
+    radial-gradient(ellipse 80% 65% at 0% 100%,  #c4a882bb 0%, transparent 100%),
+    radial-gradient(ellipse 70% 70% at 0% 10%,   #8bbfb8ee 0%, transparent 100%),
+    radial-gradient(ellipse 65% 75% at 100% 90%, #9cc8bfdd 0%, transparent 100%),
+    radial-gradient(ellipse 55% 55% at 45% 55%,  #e8dfc888 0%, transparent 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #ede8df; }
+::-webkit-scrollbar-thumb { background: #C8A96E; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #b8975a; }
