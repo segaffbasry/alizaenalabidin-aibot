@@ -175,10 +175,16 @@ function GuestChat() {
       {/* Input */}
       {exhausted ? (
         <div className="px-5 py-4 border-t border-[#e8e3d9] bg-[#faf7f2] text-center">
-          <p className="text-sm text-[#1A1A1A] font-semibold mb-2">Batas percobaan tercapai</p>
-          <Link href="/register" className="text-sm bg-[#7A9E9B] text-white px-5 py-2 rounded-lg hover:bg-[#6a8e8b] transition-colors inline-block">
-            Daftar gratis untuk lanjut →
-          </Link>
+          <p className="text-sm text-[#1A1A1A] font-semibold mb-1">Batas percobaan tercapai</p>
+          <p className="text-xs text-[#6B6560] mb-3">Daftar gratis atau masuk untuk melanjutkan ngobrol dengan AI Ali.</p>
+          <div className="flex items-center justify-center gap-2">
+            <Link href="/register" className="text-sm bg-[#7A9E9B] text-white px-5 py-2 rounded-lg hover:bg-[#6a8e8b] transition-colors inline-block">
+              Daftar gratis →
+            </Link>
+            <Link href="/login" className="text-sm border border-[#e8e3d9] text-[#1A1A1A] px-5 py-2 rounded-lg hover:bg-[#f0ebe2] transition-colors inline-block">
+              Masuk
+            </Link>
+          </div>
         </div>
       ) : (
         <form

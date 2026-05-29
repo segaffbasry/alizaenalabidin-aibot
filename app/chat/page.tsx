@@ -128,7 +128,7 @@ export default function ChatPage() {
 
   const sendMessage = async (text?: string) => {
     const trimmed = (text ?? input).trim();
-    if (!trimmed || loading || dailyCount >= DAILY_LIMIT) return;
+    if (!trimmed || loading || (isFree && dailyCount >= DAILY_LIMIT)) return;
 
     const userMsg: ChatMessage = { id: Date.now().toString(), role: "user", content: trimmed };
     setMessages((prev) => [...prev, userMsg]);
@@ -177,6 +177,7 @@ export default function ChatPage() {
           Tanya AZA
         </Link>
         <div className="flex items-center gap-5">
+          {isFree && (
           <div className="group relative flex items-center justify-center cursor-default w-8 h-8">
             <svg viewBox="0 0 36 36" className="w-8 h-8 -rotate-90">
               <circle cx="18" cy="18" r="14" fill="none" stroke="#e8e3d9" strokeWidth="3" />
@@ -197,6 +198,7 @@ export default function ChatPage() {
               </div>
             </div>
           </div>
+          )}
           <button
             onClick={openHistory}
             className="flex items-center gap-1.5 text-[#6B6560] hover:text-[#1A1A1A] transition-colors"
@@ -276,7 +278,7 @@ export default function ChatPage() {
 
       {/* Input */}
       <div data-input className="border-t border-[#e8e3d9] px-4 py-4 bg-white shrink-0">
-        {dailyCount >= DAILY_LIMIT && (
+        {isFree && dailyCount >= DAILY_LIMIT && (
           <div className="max-w-3xl mx-auto text-center py-2 mb-3">
             <p className="text-sm text-[#1A1A1A] font-semibold mb-2">Batas pesan harian tercapai</p>
             <Link href="/upgrade" className="text-sm bg-[#6B8F8E] text-white px-5 py-2 rounded-lg hover:bg-[#5a7e7c] transition-colors inline-block">
@@ -291,13 +293,13 @@ export default function ChatPage() {
             onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); } }}
             placeholder="Tanya AZA..."
             rows={1}
-            disabled={dailyCount >= DAILY_LIMIT}
+            disabled={isFree && dailyCount >= DAILY_LIMIT}
             className="flex-1 resize-none border border-[#e8e3d9] rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#C8A96E] bg-white placeholder:text-[#9a9490] max-h-40 overflow-y-auto disabled:opacity-40"
             onInput={(e) => { const el = e.currentTarget; el.style.height = "auto"; el.style.height = el.scrollHeight + "px"; }}
           />
           <button
             onClick={() => sendMessage()}
-            disabled={loading || !input.trim() || dailyCount >= DAILY_LIMIT}
+            disabled={loading || !input.trim() || (isFree && dailyCount >= DAILY_LIMIT)}
             className="bg-[#1A1A1A] text-white p-3 rounded-xl hover:bg-[#333] transition-colors disabled:opacity-40 shrink-0"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

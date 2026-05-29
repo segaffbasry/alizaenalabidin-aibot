@@ -1,5 +1,6 @@
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
+import { cookieOptions } from './cookie-options'
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? 'https://placeholder.supabase.co'
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? 'placeholder-key'
@@ -11,6 +12,7 @@ export async function createClient() {
     SUPABASE_URL,
     SUPABASE_ANON_KEY,
     {
+      cookieOptions,
       cookies: {
         getAll() {
           return cookieStore.getAll()

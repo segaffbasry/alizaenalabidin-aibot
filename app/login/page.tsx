@@ -34,6 +34,10 @@ export default function LoginPage() {
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) {
         setError(error.message);
+      } else if (!data.user?.email_confirmed_at) {
+        // Block access until the email is verified.
+        await supabase.auth.signOut();
+        setError("Email kamu belum dikonfirmasi. Silakan cek inbox (dan folder spam) untuk link verifikasi.");
       } else {
         const { data: profile } = await supabase.from("profiles").select("role").eq("id", data.user.id).single();
         router.push(profile?.role === "admin" ? "/admin" : "/chat");

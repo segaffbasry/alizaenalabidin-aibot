@@ -1,0 +1,38 @@
+<!--
+  Branded "Confirm signup" email for Supabase Auth.
+  Paste this into: Supabase Dashboard → Authentication → Emails → "Confirm signup".
+
+  {{ .ConfirmationURL }} is the Supabase-generated confirmation link. Keeping it
+  means the default link mechanics still work; we only restyle the email.
+
+  (Optional, for the explicit token_hash flow instead of ConfirmationURL, use:
+   {{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=signup&next=/chat
+   — both /auth/confirm and /auth/callback handle this.)
+-->
+<div style="font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 520px; margin: 0 auto; color: #1A1A1A;">
+  <div style="background: #1A1A1A; color: #F5F0E8; padding: 28px 32px; border-radius: 12px 12px 0 0;">
+    <h1 style="margin: 0; font-size: 22px; font-weight: 500;">Ali Zaenal Abidin</h1>
+  </div>
+  <div style="background: #F5F0E8; padding: 32px; border-radius: 0 0 12px 12px;">
+    <h2 style="margin: 0 0 16px; font-size: 20px; font-weight: 600;">Konfirmasi email kamu</h2>
+    <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">
+      Terima kasih sudah mendaftar. Klik tombol di bawah untuk mengaktifkan akunmu
+      dan mulai ngobrol dengan AI Ali.
+    </p>
+    <p style="margin: 0 0 28px;">
+      <a href="{{ .ConfirmationURL }}"
+         style="display: inline-block; background: #6B8F8E; color: #ffffff; text-decoration: none; font-weight: 600; padding: 14px 28px; border-radius: 12px;">
+        Konfirmasi Email
+      </a>
+    </p>
+    <p style="font-size: 13px; line-height: 1.6; color: #6B6560; margin: 0 0 8px;">
+      Jika tombol tidak berfungsi, salin dan tempel tautan ini di browser:
+    </p>
+    <p style="font-size: 13px; line-height: 1.6; color: #6B8F8E; word-break: break-all; margin: 0 0 24px;">
+      {{ .ConfirmationURL }}
+    </p>
+    <p style="font-size: 13px; line-height: 1.6; color: #6B6560; margin: 0;">
+      Kalau kamu tidak merasa mendaftar, abaikan saja email ini.
+    </p>
+  </div>
+</div>

@@ -26,6 +26,7 @@ const PLANS: {
   key: PlanKey;
   label: string;
   price: number;
+  months: number;
   originalPrice?: number;
   period: string;
   desc: string;
@@ -37,6 +38,7 @@ const PLANS: {
     key: "1month",
     label: "1 Bulan",
     price: 29000,
+    months: 1,
     period: "/ bulan",
     desc: "Akses penuh selama 1 bulan.",
     highlight: false,
@@ -45,6 +47,7 @@ const PLANS: {
     key: "6month",
     label: "6 Bulan",
     price: 150000,
+    months: 6,
     originalPrice: 176000,
     period: "/ 6 bulan",
     desc: "Hemat Rp 26.000 dibanding bulanan.",
@@ -55,6 +58,7 @@ const PLANS: {
     key: "12month",
     label: "12 Bulan",
     price: 240000,
+    months: 12,
     originalPrice: 348000,
     period: "/ 12 bulan",
     desc: "Hemat Rp 108.000 — harga terbaik.",
@@ -93,7 +97,7 @@ export default function PricingPage() {
         body: JSON.stringify({ plan: planKey }),
       });
       if (res.status === 401) {
-        router.push("/login?next=/pricing");
+        router.push("/login?next=/upgrade");
         return;
       }
       const data = await res.json();
@@ -190,9 +194,14 @@ export default function PricingPage() {
                   {formatIDR(plan.price)}
                 </span>
               </div>
-              <span className={`text-xs mb-4 ${plan.highlight || plan.highlightAlt ? "text-white/70" : "text-[#6B6560]"}`}>
+              <span className={`text-xs ${plan.months > 1 ? "mb-1" : "mb-4"} ${plan.highlight || plan.highlightAlt ? "text-white/70" : "text-[#6B6560]"}`}>
                 {plan.period}
               </span>
+              {plan.months > 1 && (
+                <span className={`text-xs mb-4 font-semibold ${plan.highlight || plan.highlightAlt ? "text-white/90" : "text-[#7A9E9B]"}`}>
+                  ≈ {formatIDR(Math.round(plan.price / plan.months))}/bulan
+                </span>
+              )}
 
               <p className={`text-sm mb-8 leading-relaxed flex-1 font-semibold ${plan.highlight || plan.highlightAlt ? "text-white/80" : "text-[#6B6560]"}`}>
                 {plan.desc}
