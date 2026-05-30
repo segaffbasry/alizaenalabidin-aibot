@@ -10,7 +10,7 @@ import { createClient } from "@/lib/supabase/client";
 import { UserMenu } from "@/components/ui/user-menu";
 
 const BASE_NAV_LINKS = [
-  { label: "Ali Zaenal Abidin", href: "https://alizaenalabidin-web.vercel.app/", external: true },
+  { label: "Ali Zaenal Abidin", href: "https://alizaenalabidin.com/", external: true },
   { label: "Upgrade", href: "/upgrade", external: false },
 ];
 
